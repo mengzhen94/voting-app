@@ -1,0 +1,169 @@
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+}
+
+header{
+    color: #00BCD4;
+    height: 56px;
+    margin: 15px 0 14px 0;
+    text-align: center;
+}
+
+p{
+	margin: 8px 0 0 0; 
+}
+
+.container p{
+	text-align: center;
+	padding: 0;
+}
+
+.menu {
+    text-decoration: none;
+    padding: 6px;
+    margin: 0;
+    color: #727272;
+}
+
+.menu:visited {
+    color: #727272;
+}
+
+.menu:hover {
+    color: #FFA000;
+}
+
+.menu:active {
+    color: #FF630D;
+}
+
+header a ~ p {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    color: #ECEFF1;
+}
+
+img{
+	margin: 20px auto 0 auto;
+	display: block;
+}
+
+.clementine-text{
+	padding: 0;
+	matergin: -25px 0 0 0;
+	font-weight: 500;
+	font-size: 60px;
+	color: #FFA000;
+}
+
+.btn-container{
+	margin: -10px auto 0 auto;
+	text-align: center;
+}
+
+.btn{
+	margin: 0 8px;
+    color: white;
+    background-color: #00BCD4;
+    display: inline-block;
+    border: 0;
+    font-size: 14px;
+    border-radius: 3px;
+    padding: 10px 5px;
+    width: 100px;
+    font-weight: 500;
+}
+
+.btn:focus {    /* Remove outline when hovering over button */
+    outline: none;
+}
+
+.btn:active {   /* Scale the button down by 10% when clicking on button */
+    transform: scale(0.9, 0.9);
+    -webkit-transform: scale(0.9, 0.9);
+    -moz-transform: scale(0.9, 0.9);
+}
+
+/*******Login Styling*******/
+
+.login {
+    margin: 86px auto 0 auto;
+    text-align: center;
+}
+
+#login-btn {
+    width: 225px;
+    padding: 7px 5px;
+}
+
+.btn p {
+    margin: 9px 0 0 0;
+    padding: 0;
+}
+
+.btn > img {
+    float: left;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.btn-delete {   /* Styling for delete button */
+    background-color: #ECEFF1;
+    color: #212121;
+}
+
+[ng-cloak] {
+  display: none !important;
+}
+
+/****** Profile Styling ******/
+.github-profile {
+    width: 350px;
+    height: 200px;
+    border-radius: 3px;
+    margin: 86px auto 0 auto;
+    background-color: #EEE;
+    text-align: center;
+    color: #000;
+}
+
+.github-profile p {
+    margin: 0 0 0 16px;
+    text-align: left;
+}
+.github-profile p:first-child {
+    padding-top: 16px;
+}
+
+.github-profile p:nth-child(5) {
+    margin-bottom: 16px
+}
+.github-profile > img {
+    padding-top: 16px;
+    margin-bottom: 16px;
+}
+
+.profile-value {
+    font-weight: 400;
+}
+
+span {
+    font-weight: 500;
+}
+
+
+.github-profile .menu:hover {
+    color: #FFA000;
+}
+
+.github-profile .menu:active {
+    color: #FF630D;
+}
+
+#menu-divide {
+    color: #FFFFFF;
+    display: inline;
+    margin: 0;
+}

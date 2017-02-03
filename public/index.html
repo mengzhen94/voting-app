@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="clementineApp">
+<head>
+	<title>Clementine.js - The elegant and lightweight full-stack boilerplate.</title>
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
+	<link rel="stylesheet" type="text/css" href="/public/css/main.css">
+</head>
+
+<header ng-controller="clickController">
+	<p>Welcome, <span ng-cloak id="display-name">{{displayName}}</span>!</p>
+	<a class="menu" href="/profile">Profile</a>
+	<p id="menu-divide">|</p>
+	<a class="menu" href="/logout">Logout</a>
+</header>
+
+<body>
+	
+	<div class="container">
+		<img src="/public/img/clementine_150.png"/>
+		<br/>
+		<p class="clementine-text">Clementine.js</p>		
+	</div>
+
+	<div class="container" ng-controller="clickController">
+		<p>You have clicked the button <span ng-cloak>{{clicks}}</span> times.</p>
+		<br/>
+		<div class="btn-container">
+			<button type="submit" class="btn btn-add" ng-click="addClick()">Click Me</button>
+			<button class="btn btn-delete" ng-click="resetClicks()">Reset</button>
+		</div>
+	</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+<script type="text/javascript" src="/controllers/clickController.client.js"></script>
+</body>
+</html>
