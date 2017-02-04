@@ -1,7 +1,7 @@
 'use strict';
 
 var path = process.cwd();
-var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
+//var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
 
 module.exports = function(app, passport){
 
@@ -14,12 +14,7 @@ module.exports = function(app, passport){
 		}
 	}
 
-	var clickHandler = new ClickHandler();
-	/*
-	if the user is authenticated, then Express passes control 
-	back to the app.route middleware and proceeds processing the route.
-	*/
-
+	//var clickHandler = new ClickHandler();
 
 	app.route('/login').get(function(req, res){
 		res.sendFile(path + '/public/login.html');
@@ -29,14 +24,6 @@ module.exports = function(app, passport){
 	app.route('/nav').get(function(req, res){
 		res.sendFile(path + '/public/nav.html');
 	});
-
-
-	/*
-	Passport exposes a logout() function on req (also aliased as logOut()) 
-	that can be called from any route handler which needs to terminate a 
-	login session. 
-	*/
-
 
 	app.route('/auth/github')
 		.get(passport.authenticate('github'));
@@ -69,26 +56,30 @@ module.exports = function(app, passport){
 		res.sendFile(path + '/public/home.html');
 	});
 
+	//each poll
+	app.route('/polls/:id').get(function(req, res){
+		res.sendFile(path + '/public/eachpoll.html');
+	});
 
-	// This is the object which contains all the relevant user information, 
-	//and we will query this from the front end later for the profile page.
+
+
+
+
+
+
+	/*
+
 	app.route('/api/:id')
 	.get(isLoggedIn, function(req, res){
 		res.json(req.user.github);
 	});
 
-
-	/*
-	We're defining a new route here for our API
-	The getClicks function will be executed anytime 
-	there is an HTTP GET request on the /api/clicks URL. 
-	This will tell the Node to execute the controller function 
-	we defined previously and get the results from the database.
-	*/
 	app.route('/api/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
 		.post(isLoggedIn, clickHandler.addClick)
 		.delete(isLoggedIn, clickHandler.resetClicks);
+
+	*/
 };
 
 
