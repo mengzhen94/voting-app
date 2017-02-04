@@ -19,9 +19,7 @@ module.exports = function(app, passport){
 	if the user is authenticated, then Express passes control 
 	back to the app.route middleware and proceeds processing the route.
 	*/
-	app.route('/').get(isLoggedIn, function(req, res){
-		res.sendFile(path + '/public/index.html');
-	});
+
 
 	app.route('/login').get(function(req, res){
 		res.sendFile(path + '/public/login.html');
@@ -38,21 +36,7 @@ module.exports = function(app, passport){
 	that can be called from any route handler which needs to terminate a 
 	login session. 
 	*/
-	app.route('/logout').get(function(req, res){
-		req.logout();
-		res.redirect('/login');
-	});
 
-	app.route('/profile').get(isLoggedIn, function(req, res){
-		res.sendFile(path + '/public/profile.html');
-	});
-
-	// This is the object which contains all the relevant user information, 
-	//and we will query this from the front end later for the profile page.
-	app.route('/api/:id')
-	.get(isLoggedIn, function(req, res){
-		res.json(req.user.github);
-	});
 
 	app.route('/auth/github')
 		.get(passport.authenticate('github'));
@@ -62,6 +46,37 @@ module.exports = function(app, passport){
 			successRedirect: '/',
 			failureRedirect: '/login'
 		}));
+
+
+	app.route('/').get(isLoggedIn, function(req, res){
+		res.sendFile(path + '/public/home.html');
+	});
+
+	app.route('/logout').get(function(req, res){
+		req.logout();
+		res.redirect('/login');
+	});
+
+	app.route('/mypolls').get(isLoggedIn, function(req, res){
+		res.sendFile(path + '/public/mypolls.html');
+	});
+
+	app.route('/newpolls').get(isLoggedIn, function(req, res){
+		res.sendFile(path + '/public/newpolls.html');
+	});
+
+	app.route('/home').get(isLoggedIn, function(req, res){
+		res.sendFile(path + '/public/home.html');
+	});
+
+
+	// This is the object which contains all the relevant user information, 
+	//and we will query this from the front end later for the profile page.
+	app.route('/api/:id')
+	.get(isLoggedIn, function(req, res){
+		res.json(req.user.github);
+	});
+
 
 	/*
 	We're defining a new route here for our API
