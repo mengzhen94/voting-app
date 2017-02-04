@@ -27,6 +27,12 @@ module.exports = function(app, passport){
 		res.sendFile(path + '/public/login.html');
 	});
 
+	//load nav bar
+	app.route('/nav').get(function(req, res){
+		res.sendFile(path + '/public/nav.html');
+	});
+
+
 	/*
 	Passport exposes a logout() function on req (also aliased as logOut()) 
 	that can be called from any route handler which needs to terminate a 

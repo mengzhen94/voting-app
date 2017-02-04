@@ -4,10 +4,8 @@ body{
 }
 
 header{
-    color: #00BCD4;
     height: 56px;
-    margin: 15px 0 14px 0;
-    text-align: center;
+    margin: 0px 0 14px 0;
 }
 
 p{
@@ -50,13 +48,7 @@ img{
 	display: block;
 }
 
-.clementine-text{
-	padding: 0;
-	matergin: -25px 0 0 0;
-	font-weight: 500;
-	font-size: 60px;
-	color: #FFA000;
-}
+
 
 .btn-container{
 	margin: -10px auto 0 auto;
@@ -88,26 +80,6 @@ img{
 
 /*******Login Styling*******/
 
-.login {
-    margin: 86px auto 0 auto;
-    text-align: center;
-}
-
-#login-btn {
-    width: 225px;
-    padding: 7px 5px;
-}
-
-.btn p {
-    margin: 9px 0 0 0;
-    padding: 0;
-}
-
-.btn > img {
-    float: left;
-    margin-left: 10px;
-    margin-top: 3px;
-}
 
 .btn-delete {   /* Styling for delete button */
     background-color: #ECEFF1;

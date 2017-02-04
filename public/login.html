@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Clementine.js - The elegant and lightweight full stack JavaScript boilerplate.</title>
+	<title>Voting APP</title>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
 	<link rel="stylesheet" type="text/css" href="/public/css/main.css">
+	<!--JQuery CDN-->
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<!-- Bootstrap CDN -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<!--Nav Bar-->
+	<script type="text/javascript">
+    	$(document).ready(function(){     		
+    		$('#menu').load("/nav", function(){
+    			$("#home").addClass('active');
+    			$("#logout").html('LOGIN <span class="caret"></span>');
+    		});
+    	});
+	</script>
+
 </head>
+
+<header id="menu"></header>
+
 <body>
-	<div class="container">
-		<div class="login">
-			<img src="/public/img/clementine_150.png" />
-			<br/>
-			<p class="clementine-text">Clementine.js</p>
-			<a href="/auth/github">
-				<div class="btn" id="login-btn">
-					<img src="/public/img/github_32px.png" alt="github logo" />
-					<p>Login With GitHub</p>
-				</div>
-			</a>
-		</div>	
-	</div>
+	
 </body>
 </html>
