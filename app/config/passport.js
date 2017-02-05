@@ -52,7 +52,6 @@ module.exports = function(passport){
 					newUser.github.displayName = profile.displayName;
 					newUser.github.publicRepos = profile._json.public_repos;
 
-					newUser.nbrClicks.clicks = 0;
 					// insert this information into the database
 					newUser.save(function(err){
 						if(err)

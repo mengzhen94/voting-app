@@ -10,7 +10,7 @@ var app = express();
 require('dotenv').load();
 require('./app/config/passport')(passport);
 
-//mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_URI);
 
 app.use(bodyParser.urlencoded())
