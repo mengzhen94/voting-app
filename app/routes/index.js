@@ -1,9 +1,12 @@
 'use strict';
 
 var path = process.cwd();
-//var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
+var ClickHandler = require(path + '/app/controllers/clickHandler.server.js');
+var bodyParser = require("body-parser");
 
 module.exports = function(app, passport){
+
+	var clickHandler = new ClickHandler();
 
 	function isLoggedIn(req, res, next){
 		//if the user has been verified, then carry on
@@ -14,7 +17,7 @@ module.exports = function(app, passport){
 		}
 	}
 
-	//var clickHandler = new ClickHandler();
+	
 
 	app.route('/login').get(function(req, res){
 		res.sendFile(path + '/public/login.html');
@@ -48,18 +51,30 @@ module.exports = function(app, passport){
 		res.sendFile(path + '/public/mypolls.html');
 	});
 
-	app.route('/newpolls').get(isLoggedIn, function(req, res){
-		res.sendFile(path + '/public/newpolls.html');
-	});
-
 	app.route('/home').get(isLoggedIn, function(req, res){
 		res.sendFile(path + '/public/home.html');
 	});
 
-	//each poll
+	//make a new poll
+
+	
+
+	app.route('/newpolls')
+		.get(isLoggedIn, function(req, res){
+			res.sendFile(path + '/public/newpolls.html');
+		});
+	
+	app.route('/newpolls').post(isLoggedIn,clickHandler.addPoll);
+	/*app.route('/newpolls').post(isLoggedIn,function(req,res){
+		console.log("index-request: ", req.body);
+	});
+*/
+	//display each poll
 	app.route('/polls/:id').get(function(req, res){
 		res.sendFile(path + '/public/eachpoll.html');
 	});
+
+	
 
 
 
@@ -73,7 +88,7 @@ module.exports = function(app, passport){
 	.get(isLoggedIn, function(req, res){
 		res.json(req.user.github);
 	});
-
+?????????????????????
 	app.route('/api/:id/clicks')
 		.get(isLoggedIn, clickHandler.getClicks)
 		.post(isLoggedIn, clickHandler.addClick)
