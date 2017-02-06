@@ -7,7 +7,9 @@
 	var apiUrl = '/showmypolls';
 
 	function showMyPolls (data) {
+		console.log("client-data:", typeof data);
 		console.log("client-data:", data);
+
    }
 	ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, showMyPolls));
 

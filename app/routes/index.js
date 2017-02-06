@@ -3,6 +3,7 @@
 var path = process.cwd();
 var CreatePoll = require(path + '/app/controllers/createPoll.server.js');
 var MyPolls = require(path + '/app/controllers/myPolls.server.js');
+var EachPoll =  require(path + '/app/controllers/eachpoll.server.js');
 
 //var bodyParser = require("body-parser");
 
@@ -10,6 +11,7 @@ module.exports = function(app, passport){
 
 	var createPoll = new CreatePoll();
 	var myPolls = new MyPolls();
+	var eachPoll = new EachPoll();
 
 	function isLoggedIn(req, res, next){
 		//if the user has been verified, then carry on
@@ -77,7 +79,7 @@ module.exports = function(app, passport){
 	app.route('/polls/:id').get(function(req, res){
 		res.sendFile(path + '/public/eachpoll.html');
 	});
-
+	app.route('/showpolls/:id').get(eachPoll.showonePoll);;
 	
 
 

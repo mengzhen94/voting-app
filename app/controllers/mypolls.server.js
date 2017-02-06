@@ -38,7 +38,7 @@ function MyPolls(){
 									pollNum++;
 									if(pollNum == pollIds.length){
 										console.log("mypolls:", mypolls);
-										res.json(mypolls);
+										res.send(mypolls);
 									}
 								}
 							});
