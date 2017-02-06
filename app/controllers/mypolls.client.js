@@ -1,17 +1,28 @@
 'use strict';
-
-
 (function(){
-	console.log("show my polls!!");
-	//var apiUrl = appUrl + '/showmypolls';
-	var apiUrl = '/showmypolls';
+   angular.module("mypollApp", []).controller("mypoll", ["$scope", "$http", "$parse", function($scope, $http, $parse){
+       
+       $http.get('/mypolls/api', { cache: true}).then(function(response){
+           	console.log(response.data);
+           	$scope.displayName = response.data.github.displayName;
+           	$scope.pollIDs = response.data.polls.pollIDs;
+ 			
+    		$scope.pollobjs = []; 
 
-	function showMyPolls (data) {
-		console.log("client-data:", typeof data);
-		console.log("client-data:", data);
+    		$scope.pollIDs.forEach(function(id){
+        
+         		var getter = "/showpolls/" + id;
+         		$http.get(getter, {cache: true}).then(function(res){
+             
+                	console.log(res);
+                	$scope.pollobjs.push({
+                    	"newid": res.data["_id"],
+                    	"title": res.data.title
+                	});     
+        		},function(err){throw err;});
+        
+    		});
 
-   }
-	ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, showMyPolls));
-
-
+    	});  
+  	}]); 
 })();

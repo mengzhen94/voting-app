@@ -8,9 +8,14 @@ function EachPoll(){
 	var polls = new Polls();
 
 	this.showonePoll = function(req, res){
-
-		console.log("id:", req.params.id);
-		res.json(req.params.id);
+		Polls
+			.findOne({ '_id': req.params.id })
+			.exec(function (err, result) {
+				if (err) { throw err; }
+				if(result){
+					res.json(result);
+				}
+			});
 	};
 
 

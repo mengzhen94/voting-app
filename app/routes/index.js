@@ -2,7 +2,7 @@
 
 var path = process.cwd();
 var CreatePoll = require(path + '/app/controllers/createPoll.server.js');
-var MyPolls = require(path + '/app/controllers/myPolls.server.js');
+//var MyPolls = require(path + '/app/controllers/myPolls.server.js');
 var EachPoll =  require(path + '/app/controllers/eachpoll.server.js');
 
 //var bodyParser = require("body-parser");
@@ -10,7 +10,7 @@ var EachPoll =  require(path + '/app/controllers/eachpoll.server.js');
 module.exports = function(app, passport){
 
 	var createPoll = new CreatePoll();
-	var myPolls = new MyPolls();
+	//var myPolls = new MyPolls();
 	var eachPoll = new EachPoll();
 
 	function isLoggedIn(req, res, next){
@@ -56,15 +56,6 @@ module.exports = function(app, passport){
 		res.sendFile(path + '/public/home.html');
 	});
 
-	//show my polls
-	app.route('/mypolls').get(isLoggedIn, function(req, res){
-		res.sendFile(path + '/public/mypolls.html');
-	});
-
-	app.route('/showmypolls').get(isLoggedIn,myPolls.showPolls);
-
-
-
 
 	//create a new poll
 
@@ -75,7 +66,23 @@ module.exports = function(app, passport){
 	
 	app.route('/newpolls').post(isLoggedIn,createPoll.addPoll);
 
+
+	//show my polls
+
+	app.route('/mypolls').get(isLoggedIn, function(req, res){
+		res.sendFile(path + '/public/mypolls.html');
+	});
+
+	app.route('/mypolls/api').get(isLoggedIn, function(req, res){
+    	res.json(req.user);
+    });
+
+	//app.route('/showmypolls').get(isLoggedIn,myPolls.showPolls);
+
+
+
 	//display each poll
+
 	app.route('/polls/:id').get(function(req, res){
 		res.sendFile(path + '/public/eachpoll.html');
 	});
