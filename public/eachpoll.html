@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="mypollApp" ng-controller="eachpoll">
 <head>
 	<title>Voting APP</title>
 	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:400,500">
@@ -23,17 +23,13 @@
 
 <body>
 	<div class="container">
-		<h2 id="title">Title</h2>
+		<h2 id="title">Title: {{title}}</h2>
 		<div>
 			<form>
   				<div class="form-group">
     				<label for="voteOptions">I'd like to vote for:</label>
     				<select class="form-control" id="voteOptions">
-     					<option>1</option>
-      					<option>2</option>
-      					<option>3</option>
-      					<option>4</option>
-     					<option>5</option>
+     					<option ng-repeat="option in options">{{option.op}}</option>
     				</select>
   				</div>
   				<button type="submit" class="btn btn-primary">Submit</button>
@@ -41,10 +37,8 @@
 		</div><!-- /.form -->
 	</div><!-- /.container -->
 
-<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
--->
-<script type="text/javascript" src="../common/ajax-functions.js"></script>
 <script type="text/javascript" src="/controllers/eachpoll.client.js"></script>
 
 </body>

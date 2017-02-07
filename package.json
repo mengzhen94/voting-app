@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "angular-route": "^1.5.11",
     "body-parser": "^1.16.0",
     "dotenv": "^4.0.0",
     "express": "^4.14.1",

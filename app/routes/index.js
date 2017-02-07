@@ -86,28 +86,11 @@ module.exports = function(app, passport){
 	app.route('/polls/:id').get(function(req, res){
 		res.sendFile(path + '/public/eachpoll.html');
 	});
-	app.route('/showpolls/:id').get(eachPoll.showonePoll);;
-	
-
-
-
-
-
-
-
-	/*
-
-	app.route('/api/:id')
-	.get(isLoggedIn, function(req, res){
-		res.json(req.user.github);
+	//app.route('/showpolls/:id').get(eachPoll.showonePoll);
+	app.route('/showpolls/:id').get(function(req, res){
+		eachPoll.showonePoll(req, res);
 	});
-?????????????????????
-	app.route('/api/:id/clicks')
-		.get(isLoggedIn, clickHandler.getClicks)
-		.post(isLoggedIn, clickHandler.addClick)
-		.delete(isLoggedIn, clickHandler.resetClicks);
 
-	*/
 };
 
 
