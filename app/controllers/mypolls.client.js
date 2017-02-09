@@ -6,6 +6,7 @@
 
            	$scope.displayName = response.data.github.displayName;
            	$scope.pollIDs = response.data.polls.pollIDs;
+            //console.log("response.data.polls.pollIDs:",response.data.polls.pollIDs);
  			
     		$scope.pollobjs = []; 
 

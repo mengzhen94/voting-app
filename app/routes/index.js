@@ -95,12 +95,8 @@ module.exports = function(app, passport){
 	app.route('/showpolls/:id').get(eachPoll.showonePoll);
 
 	//delete a poll
-	app.route('/showpolls/:id/delete').get(eachPoll.deletePoll);
-	/*app.route('/showpolls/:id/delete').get(isLoggedIn, function(req, res){
-    	eachPoll.deletePoll;
-    	res.redirect('/mypolls');
-    });
-    */
+	app.route('/showpolls/:id/delete').get(isLoggedIn, eachPoll.deletePoll);
+    
 };
 
 

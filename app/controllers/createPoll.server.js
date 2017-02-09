@@ -5,12 +5,14 @@ var Polls = require('../models/polls.js');
 
 function ClickHandler(){
 
-	var polls = new Polls();
 
 	this.addPoll = function(req, res){
+
+		var polls = new Polls();
+
 		var body = req.body;
-		console.log("body: ", body);
-		console.log("user: ", req.user);
+		//console.log("body: ", body);
+		//console.log("user: ", req.user);
 
 		polls.title = body.title;
 		for(var i = 1 ; i < Object.keys(body).length; i++){
@@ -22,7 +24,7 @@ function ClickHandler(){
 			polls.options.push(option);
 		}
 
-		console.log("polls ", polls);
+		//console.log("polls ", polls);
 
 		polls.save(function (err) {
 			if (err) {
@@ -44,7 +46,8 @@ function ClickHandler(){
 				}
 			});
 
-		res.end(JSON.stringify(polls));
+		//res.json(polls);
+		res.redirect('/mypolls');
 	};
 
 
