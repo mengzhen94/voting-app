@@ -66,10 +66,9 @@ module.exports = function(app, passport){
 
 	//create a new poll
 
-	app.route('/newpolls')
-		.get(isLoggedIn, function(req, res){
-			res.sendFile(path + '/public/newpolls.html');
-		});
+	app.route('/newpolls').get(isLoggedIn, function(req, res){
+		res.sendFile(path + '/public/newpolls.html');
+	});
 	
 	app.route('/newpolls').post(isLoggedIn,createPoll.addPoll);
 
@@ -92,6 +91,11 @@ module.exports = function(app, passport){
 	app.route('/polls/:id').get(function(req, res){
 		res.sendFile(path + '/public/eachpoll.html');
 	});
+
+	app.route('/polls/:id').post(createPoll.updatePoll);
+
+
+
 	app.route('/showpolls/:id').get(eachPoll.showonePoll);
 
 	//delete a poll

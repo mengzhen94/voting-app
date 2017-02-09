@@ -11,9 +11,12 @@
         $http.get(url, {cache: true}).then(function(res){
 
             $scope.title = res.data.title;
+            $scope.id = res.data["_id"];
+            //$scope.url = '/polls/' + res.data["_id"].toString();
             res.data.options.forEach(function(option){
             	$scope.options.push({
-                	"op": option.text
+                	"op": option.text,
+                  "num": option.votes
             	});
             });
 

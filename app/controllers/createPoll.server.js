@@ -50,6 +50,30 @@ function ClickHandler(){
 		res.redirect('/mypolls');
 	};
 
+	this.updatePoll = function(req, res){
+
+
+		var body = req.body;
+		console.log("body: ", body);
+		console.log("id: ", body.id);
+		console.log("vote: ", body.vote);
+
+		Polls.findOneAndUpdate(
+			
+			{ '_id': body.id, 
+            'options.text': body.vote},
+			{$inc : {'options.$.votes' : 1}})
+			.exec(function(err, result){
+				if(err)
+					throw err;
+
+				//res.json(result);
+			}
+		);
+		
+		res.redirect('/polls/' + body.id.toString());
+	};
+
 
 }
 

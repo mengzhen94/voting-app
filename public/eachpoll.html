@@ -15,6 +15,7 @@
 	<script type="text/javascript">
     	$(document).ready(function(){     		
     		$('#menu').load("/nav");
+    		$('#pollid').hide();
     	});
 	</script>
 </head>
@@ -24,15 +25,40 @@
 <body>
 	<div class="container">
 		<h2 id="title">Title: {{title}}</h2>
+
+		<table class="table table-bordered table-hover table-responsive">
+            <thead class="thead-inverse">
+            	<tr>
+                	<th>Options</th>
+                	<th>Votes</th>
+            	</tr>
+            </thead>
+			<tbody>
+            	<tr ng-repeat="option in options">             
+                	<td>{{option.op}}</td>
+                	<td>{{option.num}}</td>   
+            	</tr>
+        	</tbody>
+        </table>
+
+
 		<div>
-			<form>
+			<form action="" method="post">
+				<div id="pollid">
+					<input type="text" name="id" value="{{id}}">
+				</div>
+
   				<div class="form-group">
     				<label for="voteOptions">I'd like to vote for:</label>
-    				<select class="form-control" id="voteOptions">
-     					<option ng-repeat="option in options">{{option.op}}</option>
-    				</select>
+
+						<div class="radio" ng-repeat="option in options">
+  							<label><input type="radio" name="vote" value="{{option.op}}">{{option.op}}</label>
+						</div>
+
   				</div>
-  				<button type="submit" class="btn btn-primary">Submit</button>
+  				<div>
+  					<button type="submit" formmethod="post"  formaction="" formenctype="application/x-www-form-urlencoded" class="btn btn-primary">Submit</button>
+  				</div>
 			</form>
 		</div><!-- /.form -->
 	</div><!-- /.container -->
