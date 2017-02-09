@@ -14,8 +14,28 @@
 	<!--Nav Bar-->
 	<script type="text/javascript">
     	$(document).ready(function(){ 
+
+    		var options = 2;
+
     		$('#menu').load("/nav", function(){
     			$("#newpolls").addClass('active');
+    		});
+
+    		$('#addOpt').click(function(){
+    			options ++;
+    			$('.form-group').append("<div id='div-" + options.toString() + "'><label class='control-label' for='option" + options.toString() + "'>Option" + options.toString() + ":</label><textarea class='form-control' name='option" + options.toString() + "' id='option" + options.toString() + "' rows='1'></textarea></div>");
+    		});
+
+    		 $('#delOpt').click(function(){
+    		 	
+    		 	if(options > 2){
+    		 		var lastOpt = "#div-" + options.toString();
+    		 		$(lastOpt).remove();
+    		 		options --;
+    		 	}else{
+    		 		alert("It should be more than 2 options!");
+    		 	}
+    			
     		});
     });
 	</script>
@@ -28,21 +48,28 @@
 		<h2>Make a New Poll</h2>
 		<div>
 			<form class="form-horizontal" role="form">
-			<div class="form-group">
-  				<div>
-    				<label class="control-label" for="title">Title:</label>
-    				<textarea class="form-control" name="title" id="title" rows="1"></textarea>
- 				</div>
-  				<div>
-    				<label class="control-label" for="option1">Option1:</label>
-    				<textarea class="form-control" name="option1" id="option1" rows="1"></textarea>
+				<div class="form-group">
+  					<div>
+    					<label class="control-label" for="title">Title:</label>
+    					<textarea class="form-control" name="title" id="title" rows="1"></textarea>
+ 					</div>
+  					<div id="div-1">
+    					<label class="control-label" for="option1">Option1:</label>
+    					<textarea class="form-control" name="option1" id="option1" rows="1"></textarea>
+  					</div>
+  					<div id="div-2">
+    					<label class="control-label" for="option2">Option2:</label>
+    					<textarea class="form-control" name="option2" id="option2" rows="1"></textarea>
+  					</div>
   				</div>
   				<div>
-    				<label class="control-label" for="option1">Option2:</label>
-    				<textarea class="form-control" name="option2" id="option2" rows="1"></textarea>
+  					<button id="addOpt" type="button" class="btn btn-success btn-xs">Add Option</button>
+  					<button id="delOpt" type="button" class="btn btn-success btn-xs">Detele Option</button>
+  				<div>
+  				<br/>
+  				<div>
+  					<button type="submit" formmethod="post" formaction="/newpolls" formenctype="application/x-www-form-urlencoded" class="btn btn-primary">Submit</button>
   				</div>
-  			</div>
-  				<button type="submit" formmethod="post" formaction="/newpolls" formenctype="application/x-www-form-urlencoded" class="btn btn-primary">Submit</button>
 			</form>
 		</div><!-- /.form -->
 	</div><!-- /.container -->
