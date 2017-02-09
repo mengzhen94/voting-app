@@ -38,7 +38,7 @@
             <tbody>
             	<tr ng-repeat="pollobj in pollobjs">             
                 	<td><a ng-href="/polls/{{pollobj.newid}}"> {{pollobj.title}}</a></td>
-                	<td><a class="btn btn-danger" ng-href="/view/poll/{{pollobj.newid}}/delete">DELETE</a></td>   
+                	<td><a class="btn btn-danger" ng-href="/showpolls/{{pollobj.newid}}/delete">DELETE</a></td>   
             	</tr>
             </tbody>
         </table>

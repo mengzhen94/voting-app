@@ -87,17 +87,20 @@ module.exports = function(app, passport){
 	//app.route('/showmypolls').get(isLoggedIn,myPolls.showPolls);
 
 
-
 	//display each poll
 
 	app.route('/polls/:id').get(function(req, res){
 		res.sendFile(path + '/public/eachpoll.html');
 	});
-	//app.route('/showpolls/:id').get(eachPoll.showonePoll);
-	app.route('/showpolls/:id').get(function(req, res){
-		eachPoll.showonePoll(req, res);
-	});
+	app.route('/showpolls/:id').get(eachPoll.showonePoll);
 
+	//delete a poll
+	app.route('/showpolls/:id/delete').get(eachPoll.deletePoll);
+	/*app.route('/showpolls/:id/delete').get(isLoggedIn, function(req, res){
+    	eachPoll.deletePoll;
+    	res.redirect('/mypolls');
+    });
+    */
 };
 
 

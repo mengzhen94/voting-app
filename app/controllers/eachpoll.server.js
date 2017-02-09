@@ -8,7 +8,7 @@ function EachPoll(){
 	var polls = new Polls();
 
 	this.showonePoll = function(req, res){
-		//console.log("req: ",req);
+
 		Polls
 			.findOne({ '_id': req.params.id })
 			.exec(function (err, result) {
@@ -17,6 +17,41 @@ function EachPoll(){
 					res.json(result);
 				}
 			});
+	};
+
+	this.deletePoll = function(req, res){
+
+		console.log("req.user: ", req.user);
+		
+		Polls
+			.findOne({ '_id': req.params.id }).remove()
+			.exec(function (err, result) {
+				if (err) { throw err; }
+				if(result){
+					res.json(result);
+				}
+			});
+
+		Users
+			.findOne({ 'github.id': req.user.github.id })
+			.exec(function (err, result) {
+				if (err) { throw err; }
+				if(result){
+
+					for(var i = result.polls['pollIDs'].length - 1; i >= 0; i--) {
+    					if(result.polls['pollIDs'] == req.params.id) {
+       						result.polls['pollIDs'].splice(i, 1);
+    					}
+					}
+
+					result.save(function (err) {
+						if (err) {
+							throw err;
+						}
+					});
+				}
+			});
+
 	};
 
 
