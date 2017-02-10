@@ -89,7 +89,12 @@ module.exports = function(app, passport){
 	//display each poll
 
 	app.route('/polls/:id').get(function(req, res){
-		res.sendFile(path + '/public/eachpoll.html');
+		if(req.isAuthenticated()){
+			res.sendFile(path + '/public/eachpollLogin.html');
+		}else{
+			res.sendFile(path + '/public/eachpoll.html');
+		}
+
 	});
 
 	app.route('/polls/:id').post(createPoll.updatePoll);

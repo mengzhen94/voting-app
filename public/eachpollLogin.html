@@ -24,7 +24,7 @@
 
 <body>
 	<div class="container">
-		<h2 id="title">TITLE: {{title}}</h2>
+		<h2 id="title">TITLE_login: {{title}}</h2>
 
 		<table class="table table-bordered table-hover table-responsive">
             <thead class="thead-inverse">
@@ -51,14 +51,18 @@
   				<div class="form-group">
     				<label for="voteOptions">I'd like to vote for:</label>
 
-						<div class="radio" ng-repeat="option in options">
-  							<label><input type="radio" name="vote" value="{{option.op}}">{{option.op}}</label>
-						</div>
+					<div class="radio" ng-repeat="option in options">
+  						<label><input type="radio" name="vote" value="{{option.op}}">{{option.op}}</label>
+					</div>
 
   				</div>
 
-  				<button type="button" class="btn disabled" title="This option is only available to logged in users." disabled>Add an option.</button>
-  				<h3></h3>
+  				<div>
+  					
+  				 	<button type="button" class="btn btn-info" title="This option is only available to logged in users." ng-click="showInput = !showInput">Add Option</button>
+  				 	<input ng-show="showInput" class="option" type="text" name="addoption">
+  				 	<h3></h3>
+  				 </div>
 
   				<div>
   					<button type="submit" formmethod="post"  formaction="" formenctype="application/x-www-form-urlencoded" class="btn btn-primary">Submit</button>

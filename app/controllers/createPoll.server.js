@@ -54,22 +54,44 @@ function ClickHandler(){
 
 
 		var body = req.body;
+		/*
 		console.log("body: ", body);
 		console.log("id: ", body.id);
 		console.log("vote: ", body.vote);
+		console.log("addoption: ", body.addoption);
+		*/
+		if(!body.addoption){
 
-		Polls.findOneAndUpdate(
+			Polls.findOneAndUpdate(
 			
-			{ '_id': body.id, 
-            'options.text': body.vote},
-			{$inc : {'options.$.votes' : 1}})
-			.exec(function(err, result){
-				if(err)
-					throw err;
+				{ '_id': body.id, 
+            	'options.text': body.vote},
+				{$inc : {'options.$.votes' : 1}})
+				.exec(function(err, result){
+					if(err)
+						throw err;
 
-				//res.json(result);
+					//res.json(result);
+				}
+			);
+		}else{
+			var newOption = {
+				text: body.addoption, 
+				votes: 1
 			}
-		);
+			Polls.findOne({ '_id': body.id })
+			.exec(function (err, result) {
+				if (err) { throw err; }
+				if(result){
+					result.options.push(newOption);
+					result.save(function (err) {
+						if (err) {
+							throw err;
+						}
+					});
+				}
+			});
+		}
 		
 		res.redirect('/polls/' + body.id.toString());
 	};
