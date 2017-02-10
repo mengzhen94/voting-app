@@ -20,6 +20,9 @@
     		$('#tweet-quote').on('click', function() {
       			alert("You need to login to share a poll!");
   			});
+  			$('#addOption').on('click', function() {
+      			alert("You need to login to add an option!");
+  			});
     	});
 	</script>
 </head>
@@ -72,7 +75,8 @@
 
   				</div>
 
-  				<button type="button" class="btn disabled" title="This option is only available to logged in users." disabled>Add an option.</button>
+  				<button type="button" class="btn btn-info" id="addOption">Add an option</button>
+
   				<h3></h3>
 
   				<div>
