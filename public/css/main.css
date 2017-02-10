@@ -1,3 +1,16 @@
+#tweet-quote, #tweet-quote-login{
+    float: left;
+    padding: 0px;
+    text-align: center;
+    font-size: 1.2em;
+    height: 18px;
+    width: 65px;
+    color:#ffffff;
+    
+}
+
+
+
 /*
 body{
 	font-family: 'Roboto', sans-serif;

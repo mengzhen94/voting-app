@@ -10,12 +10,16 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	
 	<!--Nav Bar-->
 	<script type="text/javascript">
     	$(document).ready(function(){     		
     		$('#menu').load("/nav");
     		$('#pollid').hide();
+    		$('#tweet-quote').on('click', function() {
+      			alert("You need to login to share a poll!");
+  			});
     	});
 	</script>
 </head>
@@ -24,7 +28,18 @@
 
 <body>
 	<div class="container">
-		<h2 id="title">TITLE: {{title}}</h2>
+
+		<div class = "head">
+			<h2 id="title">TITLE: {{title}}</h2>
+
+			<button class="btn btn-info">
+			<a class = "button" id = "tweet-quote" title = "Tweet this quote!" target = "_blank">
+				<i class = "fa fa-twitter"><span> sweet</span></i>
+			</a>
+			</button>
+			
+		</div>
+		<br/>
 
 		<table class="table table-bordered table-hover table-responsive">
             <thead class="thead-inverse">
