@@ -6,9 +6,7 @@ var Schema = mongoose.Schema;
 var User = new Schema({
 	github: {
 		id: String,
-		displayName: String,
-		username: String,
-        publicRepos: Number
+		displayName: String
 	},
 	polls:{
 		pollIDs: [String]

@@ -11,6 +11,7 @@ public_repos: The number of public repositories associated with the GitHub accou
 'use strict';
 
 var GitHubStrategy = require('passport-github').Strategy;
+var FaceStrategy = require('passport-facebook').Strategy;
 var User = require('../models/users');
 var configAuth = require('./auth');
 
@@ -48,9 +49,9 @@ module.exports = function(passport){
 					var newUser = new User();
 
 					newUser.github.id = profile.id;
-					newUser.github.username = profile.username;
+					//newUser.github.username = profile.username;
 					newUser.github.displayName = profile.displayName;
-					newUser.github.publicRepos = profile._json.public_repos;
+					
 
 					// insert this information into the database
 					newUser.save(function(err){
@@ -63,4 +64,37 @@ module.exports = function(passport){
 		});
   	  }
 	));
+
+	passport.use(new FaceStrategy({
+		clientID: configAuth.facebookAuth.clientID,
+		clientSecret: configAuth.facebookAuth.clientSecret,
+		callbackURL: configAuth.facebookAuth.callbackURL
+	 },
+	function(Token, refreshToken, profile, done) {
+		process.nextTick(function(){
+			User.findOne({'github.id':profile.id}, function(err,user){
+				if(err)
+					return done(err);
+				if(user){
+					return done(null, user);
+				}else{
+					var newUser = new User();
+
+					newUser.github.id = profile.id;
+					//newUser.github.username = profile.username;
+					newUser.github.displayName = profile.displayName;
+					
+
+					// insert this information into the database
+					newUser.save(function(err){
+						if(err)
+							throw err;
+						return done(null, newUser);
+					});
+				}
+			});		
+		});
+  	  }
+	));
+
 };

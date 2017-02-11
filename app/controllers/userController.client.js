@@ -26,7 +26,7 @@ other variables within the application that may share the same name or need to b
 				//console.log("response:" + JSON.stringify(response));
 				var results = response.data;
 				$scope.profileId = results.id;
-				$scope.profileUsername = results.username;
+				//$scope.profileUsername = results.username;
 				$scope.displayName = results.displayName;
 				$scope.profileRepos = results.publicRepos;
 			});
