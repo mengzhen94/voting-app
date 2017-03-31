@@ -4,7 +4,8 @@ var express = require("express"),
 	mongoose = require("mongoose"),
 	passport = require('passport'),
 	session = require('express-session'),
-	bodyParser = require('body-parser');
+	bodyParser = require('body-parser'),
+	favicon = require('serve-favicon');
 
 var app = express();
 require('dotenv').load();
@@ -14,6 +15,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_URI);
 
 app.use(bodyParser.urlencoded())
+app.use(favicon(process.cwd() + '/public/img/favicon.ico'));
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/common', express.static(process.cwd() + '/app/common'));

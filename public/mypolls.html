@@ -24,25 +24,30 @@
 <header id="menu"></header>
 
 <body>
+	<div class="container">
+		<p class="text-center">Hi, <span>{{displayName}}</span>. Below are polls you own.</p>
+		<p class="text-center">Select a poll to see the results and vote, or<span> <a href="/newpolls">make a new poll !</a></span></p>
 
-	<p class="text-center">Hi, <span>{{displayName}}</span>. Below are polls you own.</p>
-	<p class="text-center">Select a poll to see the results and vote, or<span> <a href="/newpolls">make a new poll !</a></span></p>
-
-        <table class="table table-bordered table-hover table-responsive">
-            <thead class="thead-inverse">
-            	<tr>
-                	<th>Title</th>
-                	<th>Delete Poll</th>
-            	</tr>
-            </thead>
-            <tbody>
-            	<tr ng-repeat="pollobj in pollobjs">             
-                	<td><a ng-href="/polls/{{pollobj.newid}}"> {{pollobj.title}}</a></td>
-                	<td><a class="btn btn-danger" ng-href="/showpolls/{{pollobj.newid}}/delete">DELETE</a></td>   
-            	</tr>
-            </tbody>
-        </table>
-
+			<table class="table table-bordered table-hover table-responsive">
+				<thead class="thead-inverse">
+					<tr>
+						<th>Title</th>
+						<th>Delete Poll</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="pollobj in pollobjs">             
+						<td><a ng-href="/polls/{{pollobj.newid}}"> {{pollobj.title}}</a></td>
+						<td><a class="btn btn-danger" ng-href="/showpolls/{{pollobj.newid}}/delete">DELETE</a></td>   
+					</tr>
+				</tbody>
+			</table>
+	</div>
+	<footer>
+		<div class="text-center">
+			Developed By <a href="https://github.com/mengzhen94/voting-app" target="_blank">Mengzhen Gao</a>
+		</div>
+	</footer>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
