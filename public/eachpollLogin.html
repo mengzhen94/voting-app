@@ -25,7 +25,7 @@
     		$('#menu').load("/nav");
     		$('#pollid').hide();
     		$('#tweet-quote-login').on('click', function() {
-      			openURL("https://twitter.com/intent/tweet?hashtags=VotingApp&amp;original_referer=https%3A%2F%2Fdev.twitter.com%2Fweb%2Ftweet-button&amp;ref_src=twsrc%5Etfw&amp;related=twitterapi%2Ctwitter&amp;text=Share%20Votes&amp;via=votingapp");
+				openURL("https://twitter.com/share?url=https%3A%2F%2Fvoting-app-mengzhengao.herokuapp.com&via=VotingApp&related=twitterapi%2Ctwitter&hashtags=VOTE&text=Share%20a%20Poll%21");
   			});
     	});
 	</script>
@@ -35,47 +35,41 @@
 
 <body>
 	<div class="container">
-		
-
 		<div class = "head">
 			<h2 class="text-center" id="title">Title: {{title}}</h2>
 			<button style="float:right; clear: both; margin-left: 2%;" class="btn btn-info">
-			<a class = "button" id = "tweet-quote-login" title = "Tweet this quote!" target = "_blank">
-				<i class = "fa fa-twitter"><span> sweet</span></i>
-			</a>
+				<a class = "button" id = "tweet-quote-login" title = "Tweet this quote!" target = "_blank">
+					<i class = "fa fa-twitter"><span> sweet</span></i>
+				</a>
 			</button>
 		<br/>
 		</div>
 		<br/>
 		<br/>
-
 		<div>
-		<div style="margin: 0 auto; width: 50%; height: auto; display: inline-block; float:left;" class="container text-center">
-		<table class="table table-bordered table-hover table-responsive">
-            <thead class="thead-inverse">
-            	<tr>
-                	<th>Options</th>
-                	<th>Votes</th>
-            	</tr>
-            </thead>
-			<tbody>
-            	<tr ng-repeat="option in options">             
-                	<td>{{option.op}}</td>
-                	<td>{{option.num}}</td>   
-            	</tr>
-        	</tbody>
-        </table>
+			<div style="margin: 0 auto; width: 50%; height: auto; display: inline-block; float:left;" class="text-center">
+			<table class="table table-bordered table-hover table-responsive">
+				<thead class="thead-inverse">
+					<tr>
+						<th>Options</th>
+						<th>Votes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="option in options">             
+						<td>{{option.op}}</td>
+						<td>{{option.num}}</td>   
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			<div style="margin: 0 auto; width: 50%; height: auto; display: inline-block; " class="text-center">
+				<canvas id="pie" class="chart chart-pie"
+					chart-data="data" chart-labels="labels" chart-options="options" chart-legend="true">
+				</canvas> 
+			</div>
+
         </div>
-
-        <div style="margin: 0 auto; width: 50%; height: auto; display: inline-block; " class="container text-center">
-        	<canvas id="pie" class="chart chart-pie"
-  				chart-data="data" chart-labels="labels" chart-options="options" chart-legend="true">
-			</canvas> 
-        </div>
-
-        </div>
-
-
 		<div style="clear: both; margin-left: 3%;">
 			<form action="" method="post">
 				<div id="pollid">
